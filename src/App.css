@@ -1,0 +1,45 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: sans-serif;
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  outline: 0;
+}
+
+header {
+  background-color: #011528;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav ul {
+  display: flex;
+  padding: 0;
+}
+
+nav ul li {
+  color: rgba(255, 255, 255, 0.65);
+  transition: all 250ms ease-in-out;
+  list-style-type: none;
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+  padding: 30px;
+}
+
+nav ul li:hover {
+  color: white;
+  background-color: #309edd;
+}
