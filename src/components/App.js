@@ -9,7 +9,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="page-container">
         <header>
           <h1>Game of Thronesamania</h1>
           <nav>
@@ -21,7 +21,7 @@ class App extends Component {
           </nav>
         </header>
         <main>
-          <div className="breadcrumb">
+          <div className="breadcrumbs">
             <span className="breadcrumb-link">Home</span>
             <span className="breadcrumb-separator">/</span>
             <span className="breadcrumb-link">Houses</span>
