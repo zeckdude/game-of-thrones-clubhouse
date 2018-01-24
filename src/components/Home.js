@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const styles = {
@@ -12,7 +11,6 @@ const styles = {
   section: {
     display: 'flex',
     flexDirection: 'column',
-    flex: 1,
   },
   img: {
     maxWidth: '100%',
