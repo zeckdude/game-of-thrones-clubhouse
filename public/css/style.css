@@ -1,3 +1,7 @@
+html {
+  overflow-y: scroll;
+}
+
 body, html {
   margin: 0;
   padding: 0;
@@ -45,33 +49,37 @@ nav ul {
 }
 
 nav ul li {
-  color: rgba(255, 255, 255, 0.65);
-  transition: all 250ms ease-in-out;
   list-style-type: none;
   flex: 1;
-  text-align: center;
-  cursor: pointer;
+}
+
+nav ul li a {
+  display: block;
   padding: 20px;
+  cursor: pointer;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.65);
+  transition: all 250ms ease-in-out;
 }
 
-nav ul li .icon {
-  margin-bottom: 6px;
-}
-
-nav ul li .icon:before {
-  font-size: 50px;
-}
-
-nav ul li:first-child .icon:before {
-  margin-left: 10px;
-}
-
-nav ul li:hover {
+nav ul li a:hover {
   color: white;
 }
 
-nav ul li.active {
+nav ul li a.active {
   color: #ffffff;
+}
+
+nav ul li a .icon {
+  margin-bottom: 6px;
+}
+
+nav ul li a .icon:before {
+  font-size: 50px;
+}
+
+nav ul li:first-child a .icon:before {
+  margin-left: 10px;
 }
 
 main {

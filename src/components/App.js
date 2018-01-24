@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
-import Home from './Home';
+import { Route, Switch, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Navigation from './Navigation';
+import Home from './Home';
+import Books from './Books';
+import Characters from './Characters';
+import Houses from './Houses';
 
 class App extends Component {
   something() {
@@ -11,14 +16,8 @@ class App extends Component {
     return (
       <div className="page-container">
         <header>
-          <h1>Game of Thrones Clubhouse</h1>
-          <nav>
-            <ul>
-              <li className="active"><div className="icon royalty-016-papyrus" />Books</li>
-              <li><div className="icon royalty-033-knight" />Characters</li>
-              <li><div className="icon royalty-030-blazon" />Houses</li>
-            </ul>
-          </nav>
+          <h1><Link to="/">Game of Thrones Clubhouse</Link></h1>
+          <Navigation />
         </header>
         <main>
           <div className="breadcrumbs">
@@ -29,7 +28,12 @@ class App extends Component {
             <span className="breadcrumb-link">House Targaryan</span>
           </div>
           <div className="content">
-            <Home />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/books" component={Books} />
+              <Route path="/characters" component={Characters} />
+              <Route path="/houses" component={Houses} />
+            </Switch>
           </div>
         </main>
         <footer>
