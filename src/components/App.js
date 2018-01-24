@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import Home from './Home';
 import PropTypes from 'prop-types';
-import '../App.css';
 
 class App extends Component {
   something() {
@@ -11,12 +11,12 @@ class App extends Component {
     return (
       <div className="page-container">
         <header>
-          <h1>Game of Thronesamania</h1>
+          <h1>Game of Thrones Clubhouse</h1>
           <nav>
             <ul>
-              <li>Books</li>
-              <li>Characters</li>
-              <li>Houses</li>
+              <li className="active"><div className="icon royalty-016-papyrus" />Books</li>
+              <li><div className="icon royalty-033-knight" />Characters</li>
+              <li><div className="icon royalty-030-blazon" />Houses</li>
             </ul>
           </nav>
         </header>
@@ -29,7 +29,7 @@ class App extends Component {
             <span className="breadcrumb-link">House Targaryan</span>
           </div>
           <div className="content">
-            Content
+            <Home />
           </div>
         </main>
         <footer>

@@ -8,18 +8,7 @@ body {
   font-family: sans-serif;
   -webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-}
-
-@font-face {
-  font-family: 'Game of Thrones';
-  src: url('./fonts/got/GameofThrones.eot');
-  src: url('./fonts/got/GameofThrones.eot?#iefix') format('embedded-opentype'),
-      url('./fonts/got/GameofThrones.woff2') format('woff2'),
-      url('./fonts/got/GameofThrones.woff') format('woff'),
-      url('./fonts/got/GameofThrones.ttf') format('truetype'),
-      url('./fonts/got/GameofThrones.svg#GameofThrones') format('svg');
-  font-weight: normal;
-  font-style: normal;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -62,7 +51,19 @@ nav ul li {
   flex: 1;
   text-align: center;
   cursor: pointer;
-  padding: 30px;
+  padding: 20px;
+}
+
+nav ul li .icon {
+  margin-bottom: 6px;
+}
+
+nav ul li .icon:before {
+  font-size: 50px;
+}
+
+nav ul li:first-child .icon:before {
+  margin-left: 10px;
 }
 
 nav ul li:hover {
@@ -70,7 +71,7 @@ nav ul li:hover {
 }
 
 nav ul li.active {
-  background-color: #309edd;
+  color: #ffffff;
 }
 
 main {
@@ -101,9 +102,34 @@ div.breadcrumbs > span:last-child {
 }
 
 div.content {
-  background: #ffffff;
+  background-color: #ffffff;
+  color: #1e1e1e;
   padding: 24px;
   flex-grow: 1;
+  display: flex;
+}
+
+div.content > section:first-child > *:first-child {
+  margin-top: 0;
+}
+
+div.content h2 {
+  font-family: 'Game of Thrones';
+  font-size: 17px;
+  line-height: 27px;
+}
+
+div.content h2 span {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  display: block;
+  font-style: italic;
+}
+
+div.content p {
+  font-size: 15px;
+  line-height: 1.4;
 }
 
 footer {
