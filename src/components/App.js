@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Navigation from './Navigation';
+import Breadcrumbs from '../containers/Breadcrumbs';
 import Home from './Home';
 import Book from '../containers/Book';
 import Books from '../containers/Books';
@@ -15,13 +16,7 @@ export default () => (
       <Navigation />
     </header>
     <main>
-      <div className="breadcrumbs">
-        <span className="breadcrumb-link">Home</span>
-        <span className="breadcrumb-separator">/</span>
-        <span className="breadcrumb-link">Houses</span>
-        <span className="breadcrumb-separator">/</span>
-        <span className="breadcrumb-link">House Targaryan</span>
-      </div>
+      <Breadcrumbs />
       <div className="content">
         <Switch>
           <Route exact path="/" component={Home} />
