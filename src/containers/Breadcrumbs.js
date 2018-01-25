@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
-import { compose } from 'recompose';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class Breadcrumbs extends Component {
+  /**
+   * Render out any breadcrumbs after the Home breadcrumb
+   * @return {ReactElement|boolean} - Markup of book list
+   */
   renderAdditionalBreadcrumbs() {
     const { breadcrumbs } = this.props;
     if (breadcrumbs.length > 1) {
@@ -56,3 +60,7 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(Breadcrumbs);
+
+Breadcrumbs.propTypes = {
+  breadcrumbs: PropTypes.array.isRequired,
+};

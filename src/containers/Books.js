@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { get as _get, isEmpty as _isEmpty, map as _map } from 'lodash';
 import * as moment from 'moment';
 import * as parseLinkHeader from 'parse-link-header';
@@ -23,6 +24,12 @@ class Books extends Component {
     this.requestBooks();
   }
 
+  /**
+   * Make a request to fetch more books from the API
+   * @param  {Number} [pageNumber=1]                 Which page number to fetch
+   * @param  {Number} [pageSize=this.state.pageSize] How many records to show per page
+   * @return void
+   */
   requestBooks = (pageNumber = 1, pageSize = this.state.pageSize) => {
     this.props.fetchBooks({
       pageNumber,
@@ -35,6 +42,10 @@ class Books extends Component {
     });
   }
 
+  /**
+   * Render list of books
+   * @return {ReactElement} - Markup of book list
+   */
   renderBooks = () => {
     const bookListItems = _map(this.props.books, (book) => {
       const releaseYear = moment(book.released).format('YYYY');
@@ -54,6 +65,10 @@ class Books extends Component {
     );
   }
 
+  /**
+   * Render the pagination for the results
+   * @return {ReactElement|boolean} - Markup of pagination controls
+   */
   renderPagination = () => {
     if (!_isEmpty(this.state.paginationData)) {
       const prevPageNumber = _get(this.state.paginationData, 'prev.page');
@@ -93,3 +108,9 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { fetchBooks, setBreadcrumbs })(Books);
+
+Books.propTypes = {
+  books: PropTypes.objectOf(PropTypes.object).isRequired,
+  fetchBooks: PropTypes.func.isRequired,
+  setBreadcrumbs: PropTypes.func.isRequired,
+};

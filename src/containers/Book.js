@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as moment from 'moment';
 import { fetchBook, setBreadcrumbs } from '../actions';
@@ -14,10 +13,14 @@ class Book extends Component {
     this.props.setBreadcrumbs(['/', 'Books', this.props.book.name]);
   }
 
+  /**
+   * Render out details of book
+   * @return {ReactElement|boolean} - Markup of book details
+   */
   renderBook = () => {
     if (this.props.book) {
       const {
-        authors, isbn, mediaType, numberOfPages, povCharacters, publisher, released,
+        authors, isbn, mediaType, numberOfPages, publisher, released,
       } = this.props.book;
 
       return (
@@ -58,3 +61,9 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 export default connect(mapStateToProps, { fetchBook, setBreadcrumbs })(Book);
+
+Book.propTypes = {
+  book: PropTypes.object.isRequired,
+  fetchBook: PropTypes.func.isRequired,
+  setBreadcrumbs: PropTypes.func.isRequired,
+};

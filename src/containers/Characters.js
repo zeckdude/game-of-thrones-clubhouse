@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { map as _map } from 'lodash';
-import * as moment from 'moment';
+import PropTypes from 'prop-types';
 import { fetchCharacters, setBreadcrumbs } from '../actions';
 
 class Characters extends Component {
@@ -25,15 +23,11 @@ class Characters extends Component {
     });
   }
 
-  renderCharacters = () => false
-
   render() {
     return (
       <section>
         <h2>Characters</h2>
         <p>Game of Thrones wouldn't be the same without the rich, detailed, and likeable characters that it offers. That's why we're so mad/happy when characters are eliminated. Click on a name to find out more information.</p>
-
-        { this.renderCharacters() }
 
         <em>(All the characters are currently on vacation as this area is under construction. Feel free to view any books though.)</em>
       </section>
@@ -50,3 +44,9 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { fetchCharacters, setBreadcrumbs })(Characters);
+
+Characters.propTypes = {
+  characters: PropTypes.objectOf(PropTypes.object).isRequired,
+  fetchCharacters: PropTypes.func.isRequired,
+  setBreadcrumbs: PropTypes.func.isRequired,
+};
