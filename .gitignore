@@ -40,3 +40,8 @@
 # Node Modules
 # ----
 **/node_modules
+
+
+# GH Pages
+# ----
+**/build
