@@ -1,18 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { map as _map } from 'lodash';
 import * as moment from 'moment';
 import { fetchBooks } from '../actions';
-import { parseIdFromUrl } from '../helpers';
-
-const styles = {
-  ul: {
-    marginTop: '30px',
-  },
-  li: {
-    marginBottom: '15px',
-  },
-};
 
 class Books extends Component {
   componentDidMount() {
@@ -20,19 +11,19 @@ class Books extends Component {
   }
 
   renderBooks = () => {
-    const bookListItems = this.props.books.map((book) => {
-      const id = parseIdFromUrl(book.url);
+    const bookListItems = _map(this.props.books, (book) => {
       const releaseYear = moment(book.released).format('YYYY');
+      const { id, name } = book;
       return (
-        <li style={styles.li} key={id}>
-          <strong><Link to={`/books/${id}`}>{book.name}</Link></strong><br />
+        <li key={id}>
+          <Link to={`/books/${id}`}>{name}</Link><br />
           <small>{releaseYear}</small>
         </li>
       );
     });
 
     return (
-      <ul style={styles.ul}>
+      <ul>
         {bookListItems}
       </ul>
     );
