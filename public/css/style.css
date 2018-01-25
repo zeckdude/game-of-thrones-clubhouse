@@ -13,12 +13,19 @@ body {
   -webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.4;
 }
 
 a {
   text-decoration: none;
   color: inherit;
   outline: 0;
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
 }
 
 .page-container {

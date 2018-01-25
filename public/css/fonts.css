@@ -16,7 +16,6 @@
   font-family: "Royalty";
   src: url("../fonts/royalty/royalty.eot");
   src: url("../fonts/royalty/royalty.eot?#iefix") format("embedded-opentype"),
-       url("../fonts/royalty/royalty.woff") format("woff"),
        url("../fonts/royalty/royalty.ttf") format("truetype"),
        url("../fonts/royalty/royalty.svg#royalty") format("svg");
   font-weight: normal;
