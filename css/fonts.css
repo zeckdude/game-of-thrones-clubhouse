@@ -1,0 +1,78 @@
+/* Game of Thrones Font */
+@font-face {
+  font-family: 'Game of Thrones';
+  src: url('../fonts/got/GameofThrones.eot');
+  src: url('../fonts/got/GameofThrones.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/got/GameofThrones.woff2') format('woff2'),
+      url('../fonts/got/GameofThrones.woff') format('woff'),
+      url('../fonts/got/GameofThrones.ttf') format('truetype'),
+      url('../fonts/got/GameofThrones.svg#GameofThrones') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Royalty Font */
+@font-face {
+  font-family: "Royalty";
+  src: url("../fonts/royalty/royalty.eot");
+  src: url("../fonts/royalty/royalty.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/royalty/royalty.ttf") format("truetype"),
+       url("../fonts/royalty/royalty.svg#royalty") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Royalty";
+    src: url("../fonts/royalty/royalty.svg#royalty") format("svg");
+  }
+}
+
+[class^="royalty-"]:before, [class*=" royalty-"]:before,
+[class^="royalty-"]:after, [class*=" royalty-"]:after {
+  font-family: Royalty;
+  font-size: 20px;
+  font-style: normal;
+}
+
+.royalty-cannon:before { content: "\f100"; }
+.royalty-crown-1:before { content: "\f101"; }
+.royalty-bottle:before { content: "\f102"; }
+.royalty-flags:before { content: "\f103"; }
+.royalty-flag-1:before { content: "\f104"; }
+.royalty-006-barrel:before { content: "\f105"; }
+.royalty-007-helmet:before { content: "\f106"; }
+.royalty-008-bullseye:before { content: "\f107"; }
+.royalty-009-shield-1:before { content: "\f108"; }
+.royalty-010-tower:before { content: "\f109"; }
+.royalty-011-axe-1:before { content: "\f10a"; }
+.royalty-012-shield:before { content: "\f10b"; }
+.royalty-013-arrows:before { content: "\f10c"; }
+.royalty-014-money-bag:before { content: "\f10d"; }
+.royalty-015-cup:before { content: "\f10e"; }
+.royalty-016-papyrus:before { content: "\f10f"; }
+.royalty-017-chest:before { content: "\f110"; }
+.royalty-018-soldier:before { content: "\f111"; }
+.royalty-019-torch:before { content: "\f112"; }
+.royalty-020-crossbow:before { content: "\f113"; }
+.royalty-021-sword-2:before { content: "\f114"; }
+.royalty-022-flag:before { content: "\f115"; }
+.royalty-023-trumpet:before { content: "\f116"; }
+.royalty-024-spear:before { content: "\f117"; }
+.royalty-025-arch:before { content: "\f118"; }
+.royalty-026-key:before { content: "\f119"; }
+.royalty-027-sword-1:before { content: "\f11a"; }
+.royalty-028-catapult:before { content: "\f11b"; }
+.royalty-029-castle:before { content: "\f11c"; }
+.royalty-030-blazon:before { content: "\f11d"; }
+.royalty-031-mace:before { content: "\f11e"; }
+.royalty-032-axe:before { content: "\f11f"; }
+.royalty-033-knight:before { content: "\f120"; }
+.royalty-034-joker:before { content: "\f121"; }
+.royalty-035-throne:before { content: "\f122"; }
+.royalty-036-swords:before { content: "\f123"; }
+.royalty-037-sword:before { content: "\f124"; }
+.royalty-038-queen:before { content: "\f125"; }
+.royalty-039-king:before { content: "\f126"; }
+.royalty-040-crown:before { content: "\f127"; }
