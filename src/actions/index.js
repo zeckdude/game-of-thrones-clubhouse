@@ -28,16 +28,18 @@ export const fetchBook = (id) => {
   );
 };
 
-export const fetchBooks = () => {
-  const request = axios.get(`${ROOT_URL}/books`);
+export const fetchBooks = ({ pageNumber, pageSize, callback }) => {
+  const request = axios.get(`${ROOT_URL}/books?page=${pageNumber}&pageSize=${pageSize}`);
 
   return dispatch => request.then(
     // Success callback
-    ({ data }) => {
+    (response) => {
+      callback(response.headers.link);
+
       // Dispatch the action to the reducer
       dispatch({
         type: FETCH_BOOKS,
-        books: data,
+        books: response.data,
       });
     },
     // Error callback
@@ -66,16 +68,17 @@ export const fetchCharacter = (id) => {
   );
 };
 
-export const fetchCharacters = () => {
+export const fetchCharacters = (callback) => {
   const request = axios.get(`${ROOT_URL}/characters`);
 
   return dispatch => request.then(
     // Success callback
-    ({ data }) => {
+    (response) => {
+      callback(response.headers.link);
       // Dispatch the action to the reducer
       dispatch({
         type: FETCH_CHARACTERS,
-        characters: data,
+        characters: response.data,
       });
     },
     // Error callback

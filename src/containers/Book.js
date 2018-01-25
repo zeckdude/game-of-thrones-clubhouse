@@ -31,7 +31,6 @@ class Book extends Component {
               <tr><th>Book Type</th><td>{mediaType}</td></tr>
               <tr><th>ISBN</th><td>{isbn}</td></tr>
               <tr><th>Publisher</th><td>{publisher}</td></tr>
-              <tr><th>Featured Characters</th><td>Placeholder</td></tr>
             </tbody>
           </table>
         </div>

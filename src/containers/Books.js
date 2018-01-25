@@ -1,17 +1,38 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { map as _map } from 'lodash';
+import { get as _get, isEmpty as _isEmpty, map as _map } from 'lodash';
 import * as moment from 'moment';
+import * as parseLinkHeader from 'parse-link-header';
 import { fetchBooks, setBreadcrumbs } from '../actions';
 
 class Books extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      paginationData: {},
+      pageSize: 3,
+    };
+  }
+
   componentWillMount() {
     this.props.setBreadcrumbs(['/', 'Books']);
   }
 
   componentDidMount() {
-    this.props.fetchBooks();
+    this.requestBooks();
+  }
+
+  requestBooks = (pageNumber = 1, pageSize = this.state.pageSize) => {
+    this.props.fetchBooks({
+      pageNumber,
+      pageSize,
+      callback: (paginationLink) => {
+        this.setState({
+          paginationData: parseLinkHeader(paginationLink),
+        });
+      },
+    });
   }
 
   renderBooks = () => {
@@ -33,6 +54,23 @@ class Books extends Component {
     );
   }
 
+  renderPagination = () => {
+    if (!_isEmpty(this.state.paginationData)) {
+      const prevPageNumber = _get(this.state.paginationData, 'prev.page');
+      const nextPageNumber = _get(this.state.paginationData, 'next.page');
+      const lastPageNumber = _get(this.state.paginationData, 'last.page');
+      return (
+        <ul className="pagination">
+          <li><button disabled={Number(nextPageNumber) === 2} onClick={() => { this.requestBooks(1); }}> &lt;&lt; </button></li>
+          <li><button disabled={!prevPageNumber} onClick={() => { this.requestBooks(prevPageNumber); }}> &lt; </button></li>
+          <li><button disabled={!nextPageNumber} onClick={() => { this.requestBooks(nextPageNumber); }}> &gt; </button></li>
+          <li><button disabled={Number(prevPageNumber) === Number(lastPageNumber) - 1} onClick={() => { this.requestBooks(lastPageNumber); }}> &gt;&gt; </button></li>
+        </ul>
+      );
+    }
+    return false;
+  }
+
   render() {
     return (
       <section>
@@ -40,6 +78,7 @@ class Books extends Component {
         <p>Feast your eyes on all the George R.R. Martin fables in the Game of Thrones universe. Click a title to find out more information.</p>
 
         {this.renderBooks()}
+        {this.renderPagination()}
       </section>
     );
   }
