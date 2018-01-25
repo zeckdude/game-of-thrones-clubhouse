@@ -3,16 +3,18 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as moment from 'moment';
-import { fetchBook } from '../actions';
+import { fetchBook, setBreadcrumbs } from '../actions';
 
 class Book extends Component {
   componentDidMount() {
     this.props.fetchBook(this.props.match.params.bookId);
   }
 
-  renderBook = () => {
-    console.log(this.props);
+  componentDidUpdate() {
+    this.props.setBreadcrumbs(['/', 'Books', this.props.book.name]);
+  }
 
+  renderBook = () => {
     if (this.props.book) {
       const {
         authors, isbn, mediaType, numberOfPages, povCharacters, publisher, released,
@@ -56,4 +58,4 @@ const mapStateToProps = (state, ownProps) => ({
   book: state.books[ownProps.match.params.bookId],
 });
 
-export default connect(mapStateToProps, { fetchBook })(Book);
+export default connect(mapStateToProps, { fetchBook, setBreadcrumbs })(Book);

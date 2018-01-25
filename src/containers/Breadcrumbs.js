@@ -5,17 +5,16 @@ import { compose } from 'recompose';
 
 class Breadcrumbs extends Component {
   renderAdditionalBreadcrumbs() {
-    const url = this.props.location.pathname;
-    if (url !== '/') {
-      const breadcrumbs = url.substring(1).split('/');
+    const { breadcrumbs } = this.props;
+    if (breadcrumbs.length > 1) {
       return breadcrumbs.reduce((builtJsx, breadcrumb, index, array) => {
-        if (index > 0) {
+        if (index > 1) {
           // Detail Title
           return (
             <span>
               {builtJsx}
               <span className="breadcrumb-separator">/</span>
-              <span className="breadcrumb-link">{Number(breadcrumb)}</span>
+              <span className="breadcrumb-link">{breadcrumb}</span>
             </span>
           );
         }
@@ -26,7 +25,7 @@ class Breadcrumbs extends Component {
           <span>
             <span className="breadcrumb-separator">/</span>
             <span className="breadcrumb-link">
-              { array.length > 1 ? <Link to={`/${breadcrumb}`}>{formattedSectionTitle}</Link> : formattedSectionTitle }
+              { array.length > 2 ? <Link to={`/${breadcrumb}`}>{formattedSectionTitle}</Link> : formattedSectionTitle }
             </span>
           </span>
         );
@@ -40,7 +39,7 @@ class Breadcrumbs extends Component {
     return (
       <div className="breadcrumbs">
         <span className="breadcrumb-link">
-          { this.props.location.pathname === '/' ? 'Home' : <Link to="/">Home</Link> }
+          { this.props.breadcrumbs.length === 1 ? 'Home' : <Link to="/">Home</Link> }
         </span>
         {this.renderAdditionalBreadcrumbs()}
       </div>
@@ -53,12 +52,7 @@ class Breadcrumbs extends Component {
  * @return {object} - Mapping of state properties (in the redux store) to prop properties that will be available within the component
  */
 const mapStateToProps = state => ({
-  books: state.books,
-  characters: state.characters,
-  houses: state.houses,
+  breadcrumbs: state.breadcrumbs,
 });
 
-export default compose(
-  connect(mapStateToProps),
-  withRouter,
-)(Breadcrumbs);
+export default connect(mapStateToProps)(Breadcrumbs);

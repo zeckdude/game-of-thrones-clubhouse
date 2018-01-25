@@ -7,6 +7,7 @@ export const FETCH_CHARACTERS = 'FETCH_CHARACTERS';
 export const FETCH_CHARACTER = 'FETCH_CHARACTER';
 export const FETCH_HOUSES = 'FETCH_HOUSES';
 export const FETCH_HOUSE = 'FETCH_HOUSE';
+export const SET_BREADCRUMBS = 'SET_BREADCRUMBS';
 
 export const fetchBook = (id) => {
   const request = axios.get(`${ROOT_URL}/books/${id}`);
@@ -121,3 +122,8 @@ export const fetchHouses = () => {
     }
   );
 };
+
+export const setBreadcrumbs = breadcrumbs => ({
+  type: SET_BREADCRUMBS,
+  breadcrumbs,
+});

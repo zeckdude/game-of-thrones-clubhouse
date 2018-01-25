@@ -3,9 +3,13 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { map as _map } from 'lodash';
 import * as moment from 'moment';
-import { fetchBooks } from '../actions';
+import { fetchBooks, setBreadcrumbs } from '../actions';
 
 class Books extends Component {
+  componentWillMount() {
+    this.props.setBreadcrumbs(['/', 'Books']);
+  }
+
   componentDidMount() {
     this.props.fetchBooks();
   }
@@ -49,4 +53,4 @@ const mapStateToProps = state => ({
   books: state.books,
 });
 
-export default connect(mapStateToProps, { fetchBooks })(Books);
+export default connect(mapStateToProps, { fetchBooks, setBreadcrumbs })(Books);
